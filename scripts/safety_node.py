@@ -24,8 +24,8 @@ class Safety(object):
         self.speed = 0      # a parameter that contains current speed
         
         # subscribe and publish to topics
-        rospy.Subscriber('odom',Odometry,self.odom_callback)
-        rospy.Subscriber('scan',LaserScan,self.scan_callback)
+        rospy.Subscriber('odom',Odometry,self.odom_callback,queue_size=10)
+        rospy.Subscriber('scan',LaserScan,self.scan_callback,queue_size=10)
         self.bool_topic = rospy.Publisher('brake_bool',Bool,queue_size=10)
         self.brake_topic = rospy.Publisher('brake',AckermannDriveStamped,queue_size=10)
     
