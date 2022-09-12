@@ -39,11 +39,11 @@ class Safety(object):
         need_to_brake = False
         for idx in range(len(scan_msg.ranges)):
             ang = scan_msg.angle_min + idx * scan_msg.angle_increment
-            if -math.pi/2 < ang < math.pi/2:        # only look at the front
+            if -math.pi/2 < ang < math.pi/2:        # This program takes care of the object in the front
                 speed_prod = self.speed*math.cos(ang) + 0.1
                 distance = scan_msg.ranges[idx]
                 ttc = distance/speed_prod
-                if ttc < 2:
+                if ttc < 2:         #TODO
                     need_to_brake = True
                     break
         
